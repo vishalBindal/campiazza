@@ -1,0 +1,27 @@
+{% extends 'Item/sell_item.html' %}
+
+{% block current1 %}active{% endblock %}
+{% block current2 %}disabled{% endblock %}
+{% block form %}
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-12">
+                                <span class="text-danger small">{{ error_message }}</span>
+                                <button type="submit" class="btn btn-success">Next</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

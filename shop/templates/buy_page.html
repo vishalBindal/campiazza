@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container-fluid" style="background: azure">
+        <div class="jumbotron">
+            <h3>Checkout page</h3>
+        </div>
+        <h5>Are you sure you want to buy {{ item.name }} for Rs. {{ item.price }} ?</h5>
+        <div class="w-100">
+            <div class="card flex-row flex-wrap">
+                <div class="card-header border-0">
+                    <img class="checkout-img" src="{{ item.itemimage_set.first.image.url }}" alt="Product image">
+                </div>
+                <div class="card-body px-2">
+                    <h4 class="card-title">{{ item.name }}</h4>
+                    <p class="card-text"><strong>{{ item.price }}</strong></p>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                </div>
+                <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
+            </div>
+
+        </div>
+        <div class="w-100">
+            <div class="card flex-row flex-wrap">
+                <div class="card-body px-2">
+                    <h3 class="card-title">Confirmation</h3>
+                    <p class="card-text">Shipping address: <strong>{{ profile.address }}</strong></p>
+                    <p class="card-text">Seller: <strong>{{ item.seller.username }}</strong></p>
+                    {% if error != '' %}
+                    <p class="card-text text-danger">{{ error }}</p>
+                    <a href="{% url 'profile' profile.user.id %}" class="btn btn-info">Go to profile page</a>
+                        {% else %}
+                        <a href="{% url 'confirm' item.id %}" class="btn btn-success">Confirm order</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h3>Edit {% block name %}{% endblock %}'s profile</h3>
+    </div>
+    <div class="container-fluid">
+    <ul class="pagination justify-content-center">
+        <li class="page-item {% block current1 %}{% endblock %}"><a class="page-link" href="#">Page 1</a></li>
+  <li class="page-item {% block current2 %}{% endblock %}"><a class="page-link" href="#">Page 2</a></li>
+</ul>
+    </div>
+    {% block form %}
+    {% endblock %}
+
+{% endblock %}

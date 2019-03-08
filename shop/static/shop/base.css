@@ -1,0 +1,48 @@
+
+
+body{
+    background: darkseagreen url("images/back-paper-2.jpg");
+    background-size: cover;
+}
+
+h1{
+    font-family: "Roboto", sans-serif;
+}
+
+.navbar-brand{
+    font-family: "Lucida Grande", cursive;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 40px;
+    height: 10px;
+    margin: 10px;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 20%;
+    background-color: rgba(0,0,0,0.4);
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+}
+.carousel-indicators .active {
+
+    margin: 10px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.carousel-control-next-icon {
+    background-image : url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23aaa' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")
+}
+
+.rounded-circle{
+    max-height: 200px;
+}
+
+.checkout-img{
+    max-height: 300px;
+}
+
+.list-img{
+    max-height: 100px;
+}

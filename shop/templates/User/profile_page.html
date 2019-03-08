@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid text-center " style="background: white">
+<h1>{{ user_view.username }}</h1>
+<img class="rounded-circle mx-auto d-block" src="{{ profile.profile_pic.url }}" alt="User profile picture">
+<p><strong>First Name: </strong>{{ user_view.first_name }}</p>
+<p><strong>Last Name: </strong>{{ user_view.last_name }}</p>
+<p><strong>Email:</strong>{{ user_view.email }}</p>
+<p><strong>Phone:</strong>{{ profile.phone }}</p>
+<p><strong>Address:</strong>{{ profile.address }}</p>
+{% if request.user == user_view %}
+    <form action="{% url 'user_edit' %}">
+    <input class="btn btn-info" type="submit" value="Edit profile" />
+</form>
+    </div>
+    <div class="container-fluid " style="background: white">
+    <h1 class="pb-2 mt-4 mb-2 border-bottom">Your orders</h1>
+    {% for item in items %}
+        <div class="w-100">
+            <div class="card flex-row flex-wrap">
+                <div class="card-header border-0">
+                    <img class="list-img" src="{{ item.itemimage_set.first.image.url }}" alt="Product image">
+                </div>
+                <div class="card-body px-2">
+                    <h4 class="card-title">{{ item.name }}</h4>
+                    <p class="card-text"><strong>Rs. {{ item.price }}</strong></p>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                </div>
+                <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
+            </div>
+    {% endfor %}
+    <h1 class="pb-2 mt-4 mb-2 border-bottom">Your items</h1>
+    {% for item in seller_items %}
+        <div class="w-100 my-4">
+            <div class="card flex-row flex-wrap">
+                <div class="card-header border-0">
+                    <img class="list-img" src="{{ item.itemimage_set.first.image.url }}" alt="Product image">
+                </div>
+                <div class="card-body px-2">
+                    <h4 class="card-title">{{ item.name }}</h4>
+                    <p class="card-text"><strong>Rs. {{ item.price }}</strong></p>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                </div>
+                <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
+            </div>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}

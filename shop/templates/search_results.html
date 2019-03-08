@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container-fluid">
+    <h1 class="pb-2 mt-4 mb-2 border-bottom">Search results</h1>
+    <hr>
+    {% if not items %}
+        <div class="alert alert-warning">No search result found!</div>
+    {% endif %}
+    {% for item in items %}
+        <div class="w-100 my-5">
+            <a href="{% url 'detail' item.pk %}">
+                <div class="card flex-row flex-wrap">
+                    <div class="card-header border-0">
+                        <img class="list-img" src="{{ item.itemimage_set.first.image.url }}" alt="Product image">
+                    </div>
+                    <div class="card-body px-2">
+                        <h4 class="card-title">{{ item.name }}</h4>
+                    </a>
+                        <p class="card-text"><strong>Rs. {{ item.price }}</strong></p>
+                        <p class="card-text">{{ item.description }}</p>
+                        <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                        {% if item.buyer_id != 0 %}
+                            <p class="card-text text-danger">Bought already</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
+                </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

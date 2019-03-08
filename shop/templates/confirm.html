@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container-fluid" style="background: azure">
+        <div class="jumbotron">
+            <h3>Confirmation page</h3>
+        </div>
+        <h5><strong>Success!</strong> You have ordered <strong>{{ item.name }}</strong> for <strong>Rs. {{ item.price }}</strong></h5> </h5>
+        <h6>The product wil be delivered to <strong>{{ profile.address }}</strong></h6>
+        <h6>Contact <a href="{% url 'profile' item.seller.id %}"> <strong>{{ item.seller.username }}</strong></a> for more details.</h6>
+        <a class="btn btn-success" href="{% url 'main' %}">Continue shopping</a>
+        <div class="w-100">
+            <div class="card flex-row flex-wrap">
+                <div class="card-header border-0">
+                    <img class="checkout-img" src="{{ item.itemimage_set.first.image.url }}" alt="Product image">
+                </div>
+                <div class="card-body px-2">
+                    <h4 class="card-title">{{ item.name }}</h4>
+                    <p class="card-text"><strong>{{ item.price }}</strong></p>
+                    <p class="card-text">{{ item.description }}</p>
+                    <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                </div>
+                <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

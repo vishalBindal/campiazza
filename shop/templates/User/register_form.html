@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h3>Register</h3>
+    <p>New users register here</p>
+    </div>
+    <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-12">
+                                <button type="submit" class="btn btn-success">Next</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

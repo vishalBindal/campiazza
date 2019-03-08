@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Sell an item!</h1>
+        <p>Just fill out this form in 2 steps</p>
+    </div>
+    <div class="container-fluid">
+    <ul class="pagination justify-content-center">
+        <li class="page-item {% block current1 %}{% endblock %}"><a class="page-link" href="#">Step 1: Details</a></li>
+  <li class="page-item {% block current2 %}{% endblock %}"><a class="page-link" href="#">Step 2: Images</a></li>
+</ul>
+    </div>
+    {% block form %}
+    {% endblock %}
+
+{% endblock %}
