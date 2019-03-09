@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.urls import reverse
+import datetime
+
 
 
 class Item(models.Model):
@@ -30,6 +32,7 @@ class Item(models.Model):
     buy_time=models.DateTimeField(blank=True, null=True)
     buyer_username = models.CharField(blank=True,null=True,max_length=100)
     buyer_address=models.CharField(blank=True,null=True,max_length=1000)
+    created_datetime = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return "{n} ( sold by {u} )" .format(n=self.name, u=self.seller.username)
