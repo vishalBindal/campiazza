@@ -14,7 +14,19 @@ import datetime
 
 def main(request):
     items = Item.objects.all()
-    return render(request, 'main.html', {'items': items, 'request':request,'ItemImage':ItemImage})
+    count=0
+    if request.user.is_authenticated:
+        prev = request.user.profile.prev_login
+        last_log = User.objects.get(id=request.user.id).last_login
+        if prev:
+            items1 = Item.objects.filter(seller=request.user)
+            for item in items1:
+                if item.buy_time:
+                    if item.buy_time > prev:
+                        count = count + 1
+        request.user.profile.prev_login = last_log
+        request.user.profile.save()
+    return render(request, 'main.html', {'items': items, 'request':request,'ItemImage':ItemImage,'count':count})
 
 
 def detail(request,item_id):
@@ -150,7 +162,10 @@ def filter_category(request):
     choices=['bk', 'el', 'ac', 'sp', 'cy', 'ot']
     for choice in choices:
         if choice in query:
-            available = Item.objects.filter(Q(buyer_id=0) | Q(buyer_id=request.user.id) | Q(seller=request.user))
+            if request.user.is_authenticated:
+                available = Item.objects.filter(Q(buyer_id=0) | Q(buyer_id=request.user.id) | Q(seller=request.user))
+            else:
+                available = Item.objects.filter(Q(buyer_id=0))
             items = available.filter(category=choice)
     return render(request, 'search_results.html', {'items': items})
 

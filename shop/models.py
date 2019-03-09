@@ -48,6 +48,7 @@ class ItemImage(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    prev_login = models.DateTimeField(blank=True,null=True)
     phone = models.BigIntegerField(blank=True, null=True)
     address = models.CharField(max_length=1000, blank=True)
     profile_pic = models.ImageField(default='avatar.jpg')

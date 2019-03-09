@@ -2,6 +2,12 @@
 
 {% block body %}
     <div class="container-fluid">
+    {% if count > 0 %}
+        <div class="alert alert-success">
+            <strong>CONGRATULATIONS!</strong><br>
+            <strong>{{ count }}</strong> of your products have been sold since last time you logged in!<br>
+        Check your profile page for more details</div>
+    {% endif %}
         <h1 class="pb-2 mt-4 mb-2 border-bottom">Items for sale</h1>
     </div>
     <div class="albums-container container-fluid">
