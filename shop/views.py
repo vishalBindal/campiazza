@@ -116,12 +116,12 @@ def image_add(request, item_id):
     form = ImageForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         image_obj = form.save(commit=False)
+        image_obj.item = item_details
         if len(request.FILES) != 0:
-            image_obj.item = item_details
             image_obj.image = request.FILES['image']
-            image_obj.save()
         else:
-            image_obj.image = 'media/cook.jpg'
+            image_obj.image = 'unknown.jpg'
+        image_obj.save()
         if 'more' in request.POST:
             return render(request, 'Item/itemimage_form.html', {'form': form, 'message': "Image added successfully!"})
         if 'exit' in request.POST:
@@ -133,7 +133,7 @@ def image_add(request, item_id):
 def profile_edit(request):
     user_obj = request.user
     profile_obj = Profile.objects.get(user=user_obj)
-    form = EditProfileForm(request.POST or None, instance=profile_obj)
+    form = EditProfileForm(request.POST or None, request.FILES or None, instance=profile_obj)
     if form.is_valid():
         user_obj = form.save(commit=False)
         user_obj.save()
