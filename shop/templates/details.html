@@ -34,11 +34,21 @@
         <h1>{{ item.name }}</h1>
         <h3>Rs. {{ item.price }}</h3>
         {% if item.buyer_id != 0 %}
-            <p class="text-danger">Already bought</p>
+            {% if item.buyer_id == user.id %}
+                <p class="card-text text-danger">Bought by you from <a
+                    href="{% url 'profile' item.seller.id %}"><strong>{{ item.seller.username }}</strong></a>
+                on {{ item.buy_time }}</p>
+                {% else %}
+
+            <p class="card-text text-danger">Bought by <a
+                    href="{% url 'profile' item.buyer_id %}"><strong>{{ item.buyer_username }}</strong></a>
+                on {{ item.buy_time }}</p>
+                {% endif %}
+            <p class="card-text text-danger">Delivery address: {{ item.buyer_address }}</p>
         {% endif %}
-        {% if item.buyer_id == 0 and user.is_authenticated and user.id != item.seller.id%}
+        {% if item.buyer_id == 0 and user.is_authenticated and user.id != item.seller.id %}
             <form action="{% url 'buy' item.id %}">
-            <button class="btn btn-success">Buy now!</button>
+                <button class="btn btn-success">Buy now!</button>
             </form><br>
         {% endif %}
         <h5>Description:</h5>

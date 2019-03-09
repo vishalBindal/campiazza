@@ -27,6 +27,9 @@ class Item(models.Model):
                                  help_text="Brief statement of present condition, less than 50 characters")
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     buyer_id = models.PositiveSmallIntegerField(blank=True, null=True, default=0)
+    buy_time=models.DateTimeField(blank=True, null=True)
+    buyer_username = models.CharField(blank=True,null=True,max_length=100)
+    buyer_address=models.CharField(blank=True,null=True,max_length=1000)
 
     def __str__(self):
         return "{n} ( sold by {u} )" .format(n=self.name, u=self.seller.username)

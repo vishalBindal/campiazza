@@ -1,10 +1,15 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
-from shop.models import Profile, Item, ItemImage
+from shop.models import Profile, Item
+
+admin.site.site_header = "Campiazza's Admin portal"
+admin.site.site_title = "Campiazza's Admin portal"
+admin.site.index_title = "All yours."
 
 
+# Edit user to extend profile
 class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
@@ -20,5 +25,17 @@ class UserAdmin(BaseUserAdmin):
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 
-admin.site.register(Item)
-admin.site.register(ItemImage)
+
+# Remove group
+admin.site.unregister(Group)
+
+
+# Edit item display
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'seller', 'buyer_username', 'buy_time')
+    list_filter = ('buy_time','price','seller','buyer_username')
+    exclude = ('buyer_id','seller','buyer_username','buy_time','buyer_address')
+
+
+admin.site.register(Item,ItemAdmin)
+

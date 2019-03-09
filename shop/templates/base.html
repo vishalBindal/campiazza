@@ -46,6 +46,10 @@
                     <a class="nav-link" href="{% url 'login' %}">Sell</a>
                 {% endif %}
             </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}"><span
+                            class="fa fa-user"></span>&nbsp;Admin</a>
+                </li>
             {% if not request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
@@ -54,6 +58,7 @@
                     <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
                 </li>
             {% else %}
+
                 <li class="nav-item">
 
                     <a class="nav-link" href="{% url 'profile' user.pk %}"><span

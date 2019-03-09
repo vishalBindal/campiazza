@@ -27,6 +27,8 @@
                     <p class="card-text"><strong>Rs. {{ item.price }}</strong></p>
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                    <p class="card-text text-danger">Bought from <a href="{% url 'profile' item.seller.id %}"><strong>{{ item.seller.username }}</strong></a> on {{ item.buy_time }}</p>
+                    <p class="card-text text-danger">Delivery address: {{ item.buyer_address }}</p>
                 </div>
                 <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
             </div>
@@ -43,6 +45,10 @@
                     <p class="card-text"><strong>Rs. {{ item.price }}</strong></p>
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text"><strong>Condition:</strong>{{ item.condition }}</p>
+                    {% if item.buyer_id != 0 %}
+                    <p class="card-text text-danger">Bought by <a href="{% url 'profile' item.buyer_id %}"><strong>{{ item.buyer_username }}</strong></a> on {{ item.buy_time }}</p>
+                    <p class="card-text text-danger">Delivery address: {{ item.buyer_address }}</p>
+                    {% endif %}
                 </div>
                 <div class="card-footer w-100 text-muted">Seller : {{ item.seller.username }}</div>
             </div>

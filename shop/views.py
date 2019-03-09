@@ -9,6 +9,7 @@ from .forms import UserForm, LoginForm,ImageForm,ItemForm, EditUserForm, EditPro
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.http import HttpResponse, Http404
+import datetime
 
 
 def main(request):
@@ -149,7 +150,8 @@ def filter_category(request):
     choices=['bk', 'el', 'ac', 'sp', 'cy', 'ot']
     for choice in choices:
         if choice in query:
-            items = Item.objects.filter(category=choice)
+            available = Item.objects.filter(Q(buyer_id=0) | Q(buyer_id=request.user.id) | Q(seller=request.user))
+            items = available.filter(category=choice)
     return render(request, 'search_results.html', {'items': items})
 
 
@@ -175,10 +177,19 @@ def confirm(request,item_id):
         raise Http404("Invalid request")
     profile_details = Profile.objects.get(user=request.user)
     item_sold.buyer_id = request.user.id
+    item_sold.buy_time = datetime.datetime.now()
+    item_sold.buyer_username=request.user.username
+    item_sold.buyer_address=request.user.profile.address
     item_sold.save()
     return render(request, 'confirm.html', {'item': item_sold, 'profile': profile_details})
 
 
+@login_required()
+def admin(request):
+    if not request.user.is_staff:
+        raise Http404("You are not authorised")
+    else:
+        return HttpResponse("hey")
 
 
 
