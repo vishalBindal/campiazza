@@ -1,7 +1,10 @@
 # campiazza
 Campiazza: 'Campus Piazza' : A market portal for IITD students
 This website is hosted at https://campiazza.herokuapp.com/shop/
-__Yet to update technical details__
+
+## Note
+__Yet to update technical details__<br>
+__In process of updating images ( after having set up amazon s3 service) (Temporarliy added item images to admin page)__
 
 ## Features
 * Login - for existing users, and sign up - for new users 
