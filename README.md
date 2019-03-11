@@ -4,7 +4,8 @@ This website is hosted at https://campiazza.herokuapp.com/shop/
 
 ## Note
 __Yet to update technical details__<br>
-__In process of updating images ( after having set up amazon s3 service) (Temporarliy added item images to admin page)__
+__Temporarliy added item images to admin page__<br>
+__The heroku code is few commits ahead of the code in this repository (configuring amazon S3 and other settings )__
 
 ## Features
 * Login - for existing users, and sign up - for new users 
