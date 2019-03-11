@@ -1,13 +1,14 @@
 # campiazza
 Campiazza: 'Campus Piazza' : A market portal for IITD students
 This website is hosted at https://campiazza.herokuapp.com/shop/
-__Will be updated in next few days to resolve current issues.__
+__Yet to update technical details__
 
 ## Features
 * Login - for existing users, and sign up - for new users 
 * Admin - admin portal
-* Search bar - to search existing products
+* Search bar & category links - to search existing products
 * Sell - Link to sell your products. However, if you are not logged in you will be redirected to login page
+
 
 ### Login
 * As per requirements, 4 users have been already created with username user_i and password pass_i (eg user_1 and pass_1)
@@ -29,11 +30,11 @@ __Will be updated in next few days to resolve current issues.__
 ### Buy
 * Click on a product to view its details page. If you are logged in, you will see a 'Buy now' button.
 * Upon clicking the button, you will be redirected to a confirmation page, displaying details of item and seller. If your address is not yet filled in, you will be prompted to update your address in your profile. Else, click confirm.
-* You can now check the product in 'Your orders' section on your profile page.
+* You can now check the product in 'Your orders' section on your profile page. It will contain info about delivery address, date/time of purchase and link to buyer's profile.
 
 ## Someone buys your product
-* When you log in, you will receive an alert indicating the no of your products (if any) which have been bought.
-* Visit 'Your items' in your profile page to view your products and their buyer information.
+* When you log in, you will receive an alert indicating the no of your products (if any) which have been bought since your last login. For this the app checks the buy time of user's items with the last login time of user.
+* Visit 'Your items' in your profile page to view your products and their buyer information (link to buyer profile, date/time of purchase, delivery address)
 
 ## Admin
 * To login to the admin portal , use username='admin' and password='admin'
