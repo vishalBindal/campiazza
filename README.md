@@ -3,8 +3,6 @@ Campiazza: 'Campus Piazza' : A market portal for IITD students
 This website is hosted at https://campiazza.herokuapp.com/shop/
 
 ## Note
-__Yet to update technical details__<br>
-__Temporarliy added item images to admin page__<br>
 __The heroku code is few commits ahead of the code in this repository (configuring amazon S3 and other settings )__
 
 ## Features
@@ -45,3 +43,5 @@ __The heroku code is few commits ahead of the code in this repository (configuri
 * In Users section, you can view a list of all users and their details. 
 * In Items section, you can view details of all transactions, and item information.
 
+### For more info,
+https://drive.google.com/open?id=1ZXf7nasSqqaADA8PPyCsWtDgYkhby6_r
